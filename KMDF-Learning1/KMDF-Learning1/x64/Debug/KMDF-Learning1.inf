@@ -1,0 +1,80 @@
+;
+; KMDF-Learning1.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System ; TODO: specify appropriate Class
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=KMDF-Learning1.cat
+DriverVer = 02/19/2023,18.17.26.279
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+KMDF-Learning1_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+KMDF-Learning1.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%KMDF-Learning1.DeviceDesc%=KMDF-Learning1_Device, Root\KMDF-Learning1 ; TODO: edit hw-id
+
+[KMDF-Learning1_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+KMDF-Learning1.sys
+
+;-------------- Service installation
+[KMDF-Learning1_Device.NT.Services]
+AddService = KMDF-Learning1,%SPSVCINST_ASSOCSERVICE%, KMDF-Learning1_Service_Inst
+
+; -------------- KMDF-Learning1 driver install sections
+[KMDF-Learning1_Service_Inst]
+DisplayName    = %KMDF-Learning1.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\KMDF-Learning1.sys
+
+;
+;--- KMDF-Learning1_Device Coinstaller installation ------
+;
+
+[KMDF-Learning1_Device.NT.CoInstallers]
+AddReg=KMDF-Learning1_Device_CoInstaller_AddReg
+CopyFiles=KMDF-Learning1_Device_CoInstaller_CopyFiles
+
+[KMDF-Learning1_Device_CoInstaller_AddReg]
+;
+
+
+[KMDF-Learning1_Device_CoInstaller_CopyFiles]
+;
+
+
+[KMDF-Learning1_Device.NT.Wdf]
+KmdfService =  KMDF-Learning1, KMDF-Learning1_wdfsect
+[KMDF-Learning1_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "KMDF-Learning1 Installation Disk"
+KMDF-Learning1.DeviceDesc = "KMDF-Learning1 Device"
+KMDF-Learning1.SVCDESC = "KMDF-Learning1 Service"
