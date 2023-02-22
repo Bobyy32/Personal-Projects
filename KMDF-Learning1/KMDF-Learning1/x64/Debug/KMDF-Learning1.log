@@ -1,23 +1,6 @@
 ﻿  Building 'KMDF-Learning1' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
   Stamping x64\Debug\KMDF-Learning1.inf
-  Stamping [Version] section with DriverVer=02/19/2023,18.17.26.279
+  Stamping [Version] section with DriverVer=02/20/2023,15.17.28.187
   function.c
-  KMDF-Learning1.vcxproj -> C:\Users\ees10\OneDrive\Documents\GitHub\Personal-Projects\KMDF-Learning1\x64\Debug\KMDF-Learning1.sys
-  Done Adding Additional Store
-  Successfully signed: C:\Users\ees10\OneDrive\Documents\GitHub\Personal-Projects\KMDF-Learning1\x64\Debug\KMDF-Learning1.sys
-  
-  Driver is 'Universal'.
-  ........................
-  Signability test complete.
-  
-  Errors:
-  None
-  
-  Warnings:
-  None
-  
-  Catalog generation complete.
-  C:\Users\ees10\OneDrive\Documents\GitHub\Personal-Projects\KMDF-Learning1\x64\Debug\KMDF-Learning1\kmdf-learning1.cat
-  Done Adding Additional Store
-  Successfully signed: C:\Users\ees10\OneDrive\Documents\GitHub\Personal-Projects\KMDF-Learning1\x64\Debug\KMDF-Learning1\kmdf-learning1.cat
-  
+C:\Users\ees10\OneDrive\Documents\GitHub\Personal-Projects\KMDF-Learning1\KMDF-Learning1\function.c(25,10): error C2084: function 'NTSTATUS DriverEntry(PDRIVER_OBJECT,PUNICODE_STRING)' already has a body
+C:\Users\ees10\OneDrive\Documents\GitHub\Personal-Projects\KMDF-Learning1\KMDF-Learning1\function.c(4,10): message : see previous definition of 'DriverEntry'
